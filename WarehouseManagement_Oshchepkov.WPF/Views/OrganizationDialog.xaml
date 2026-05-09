@@ -1,0 +1,32 @@
+﻿<Window x:Class="WarehouseManagement_Oshchepkov.WPF.OrganizationDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Организация" Height="220" Width="450"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Наименование организации" FontSize="14" FontWeight="Bold" 
+                   Margin="0,0,0,10"/>
+
+        <TextBox x:Name="TxtOrganizationName" Grid.Row="1" Margin="0,0,0,15" 
+                 FontSize="14" Padding="8,5"/>
+
+        <TextBlock Grid.Row="2" Text="Обязательное поле" FontSize="11" 
+                   Foreground="#FF888888" Margin="0,0,0,15"/>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="BtnOk" Content="Сохранить" Width="100" Height="32"
+                    Margin="0,0,10,0" Click="BtnOk_Click" IsDefault="True"/>
+            <Button x:Name="BtnCancel" Content="Отмена" Width="80" Height="32"
+                    Click="BtnCancel_Click" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
