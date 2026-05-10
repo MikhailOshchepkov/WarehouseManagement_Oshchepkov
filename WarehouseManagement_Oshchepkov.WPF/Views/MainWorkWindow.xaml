@@ -1,0 +1,165 @@
+﻿<Window x:Class="WarehouseManagement_Oshchepkov.WPF.MainWorkWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление складом" Height="700" Width="1300"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BackgroundBrush}"
+        Foreground="{StaticResource ForegroundBrush}">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <Border Grid.Row="0" Background="{StaticResource CardBackgroundBrush}" 
+                CornerRadius="5" Padding="10" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Организация: " FontWeight="Bold"/>
+                <TextBlock x:Name="TxtOrgName" Text="[не выбрана]" Foreground="{StaticResource AccentBrush}"/>
+                <TextBlock Text=" | Склад: " FontWeight="Bold" Margin="20,0,0,0"/>
+                <TextBlock x:Name="TxtWarehouseName" Text="[не выбран]" Foreground="{StaticResource AccentBrush}"/>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+ 
+            <Border Grid.Column="0" Background="{StaticResource CardBackgroundBrush}" 
+                    CornerRadius="5" Padding="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Склады" FontSize="16" FontWeight="Bold" 
+                               Margin="0,0,0,10"/>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button x:Name="BtnAddWarehouse" Content="Добавить" Width="80" 
+                                Click="BtnAddWarehouse_Click"/>
+                        <Button x:Name="BtnEditWarehouse" Content="Изменить" Width="80" 
+                                Click="BtnEditWarehouse_Click"/>
+                        <Button x:Name="BtnDeleteWarehouse" Content="Удалить" Width="80" 
+                                Click="BtnDeleteWarehouse_Click"/>
+                    </StackPanel>
+
+                    <ListView x:Name="LvWarehouses" Grid.Row="3" 
+                              SelectionChanged="LvWarehouses_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Наименование склада" Width="240" 
+                                                DisplayMemberBinding="{Binding Name}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+
+            <GridSplitter Grid.Column="1" Width="3" Background="{StaticResource BorderBrush}"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+            <Border Grid.Column="2" Background="{StaticResource CardBackgroundBrush}" 
+                    CornerRadius="5" Padding="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Товары" FontSize="16" FontWeight="Bold" 
+                               Margin="0,0,0,10"/>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button x:Name="BtnAddProduct" Content="Добавить" Width="80" 
+                                Click="BtnAddProduct_Click"/>
+                        <Button x:Name="BtnEditProduct" Content="Изменить" Width="80" 
+                                Click="BtnEditProduct_Click"/>
+                        <Button x:Name="BtnDeleteProduct" Content="Удалить" Width="80" 
+                                Click="BtnDeleteProduct_Click"/>
+                        <Button x:Name="BtnImport" Content="Импорт" Width="80" 
+                                Click="BtnImport_Click"/>
+                        <Separator Width="20" Visibility="Hidden"/>
+                        <Button x:Name="BtnInvoiceIn" Content="Приход" Width="80" 
+                                Click="BtnInvoiceIn_Click" Background="{StaticResource SuccessBrush}"/>
+                        <Button x:Name="BtnInvoiceOut" Content="Расход" Width="80" 
+                                Click="BtnInvoiceOut_Click" Background="{StaticResource EditBrush}"/>
+                    </StackPanel>
+
+                    <Border Grid.Row="2" Background="#F5F5F5" CornerRadius="5" Padding="10" 
+                            Margin="0,0,0,10" BorderBrush="#CCCCCC" BorderThickness="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox x:Name="TxtSearch" Grid.Column="0" 
+                                     TextChanged="TxtSearch_TextChanged"
+                                     Tag="Поиск по наименованию..."/>
+
+                            <TextBlock Grid.Column="1" Text="Сортировать:" 
+                                       VerticalAlignment="Center" Margin="10,0,5,0"/>
+
+                            <ComboBox x:Name="CmbSort" Grid.Column="2" Width="150"
+                                      SelectionChanged="CmbSort_SelectionChanged">
+                                <ComboBoxItem Content="По наименованию"/>
+                                <ComboBoxItem Content="По цене (возр.)"/>
+                                <ComboBoxItem Content="По цене (убыв.)"/>
+                                <ComboBoxItem Content="По остатку"/>
+                                <ComboBoxItem Content="По скидке"/>
+                            </ComboBox>
+                        </Grid>
+                    </Border>
+
+                    <ListView x:Name="LvProducts" Grid.Row="4">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Фото" Width="60">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="" FontSize="20" TextAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Наименование" Width="200" 
+                                                DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Категория" Width="100" 
+                                                DisplayMemberBinding="{Binding Category.Name}"/>
+                                <GridViewColumn Header="Производитель" Width="120" 
+                                                DisplayMemberBinding="{Binding Manufacturer.Name}"/>
+                                <GridViewColumn Header="Поставщик" Width="130" 
+                                                DisplayMemberBinding="{Binding SupplierName}"/>
+                                <GridViewColumn Header="Цена" Width="90" 
+                                                DisplayMemberBinding="{Binding Price, StringFormat={}{0:N0}₽}"/>
+                                <GridViewColumn Header="Остаток" Width="80" 
+                                                DisplayMemberBinding="{Binding StockQuantity}"/>
+                                <GridViewColumn Header="Скидка %" Width="80" 
+                                                DisplayMemberBinding="{Binding DiscountPercent}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+            <Button x:Name="BtnBack" Content="← Назад к организациям" Width="180" 
+                    Click="BtnBack_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

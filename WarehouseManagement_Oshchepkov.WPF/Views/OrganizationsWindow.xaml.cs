@@ -69,10 +69,15 @@ namespace WarehouseManagement_Oshchepkov.WPF
 
         private void BtnSelect_Click(object sender, RoutedEventArgs e)
         {
-            OpenWarehousesWindow();
+            OpenMainWorkWindow();
         }
 
-        private void OpenWarehousesWindow()
+        private void LvOrganizations_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            OpenMainWorkWindow();
+        }
+
+        private void OpenMainWorkWindow()
         {
             if (_selectedOrganization == null)
             {
@@ -80,8 +85,8 @@ namespace WarehouseManagement_Oshchepkov.WPF
                 return;
             }
 
-            var warehousesWindow = new WarehousesWindow(_selectedOrganization.Id, _selectedOrganization.Name);
-            warehousesWindow.Show();
+            var mainWindow = new MainWorkWindow(_selectedOrganization);
+            mainWindow.Show();
             this.Close();
         }
 

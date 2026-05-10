@@ -7,7 +7,6 @@ namespace WarehouseManagement_Oshchepkov.WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
             var window = new OrganizationsWindow();
             window.Show();
         }
