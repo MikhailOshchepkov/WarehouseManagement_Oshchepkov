@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using System.Linq;
 using WarehouseManagement_Oshchepkov.Data.Models;
 
 namespace WarehouseManagement_Oshchepkov.Data.Services
 {
-    /// Сервис для работы с накладными (партионный учет)
+    /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ)
     public class InvoiceService
     {
         private List<Invoice> _invoices;
@@ -18,11 +18,11 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
             _nextId = 1;
         }
 
-        /// Создать новую накладную
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public Invoice CreateInvoice(InvoiceType type, long warehouseId)
         {
             var invoice = new Invoice(type, warehouseId);
-            // Перезаписываем ID, чтобы не было конфликтов
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ID, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             var property = typeof(Invoice).GetProperty("Id");
             if (property != null && property.CanWrite)
             {
@@ -31,7 +31,7 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
             return invoice;
         }
 
-        /// Добавить товар в накладную
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public void AddItemToInvoice(Invoice invoice, string productArticle, int quantity)
         {
             var product = _productService.GetByArticle(productArticle);
@@ -48,7 +48,7 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
             }
         }
 
-        /// Удалить товар из накладной
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public void RemoveItemFromInvoice(Invoice invoice, string productArticle)
         {
             var item = invoice.Items.FirstOrDefault(i => i.ProductArticle == productArticle);
@@ -56,13 +56,13 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
                 invoice.Items.Remove(item);
         }
 
-        /// Подтвердить накладную (изменить остатки на складе)
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)
         public bool ConfirmInvoice(Invoice invoice)
         {
             if (invoice.IsConfirmed)
                 return false;
 
-            // Для расходной накладной проверяем, хватает ли товара
+            // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             if (invoice.Type == InvoiceType.Outgoing)
             {
                 foreach (var item in invoice.Items)
@@ -70,12 +70,12 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
                     var product = _productService.GetByArticle(item.ProductArticle);
                     if (product == null || product.StockQuantity < item.Quantity)
                     {
-                        return false; // Не хватает товара
+                        return false; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                     }
                 }
             }
 
-            // Обновляем остатки
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             foreach (var item in invoice.Items)
             {
                 int change = invoice.Type == InvoiceType.Incoming ? item.Quantity : -item.Quantity;
@@ -87,13 +87,13 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
             return true;
         }
 
-        /// Получить все накладные
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public List<Invoice> GetAllInvoices()
         {
             return _invoices.ToList();
         }
 
-        /// Получить накладные по складу
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         public List<Invoice> GetInvoicesByWarehouse(long warehouseId)
         {
             return _invoices.Where(i => i.WarehouseId == warehouseId).ToList();

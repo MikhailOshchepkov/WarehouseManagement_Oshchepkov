@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using System.Linq;
 using WarehouseManagement_Oshchepkov.Data.Models;
 
 namespace WarehouseManagement_Oshchepkov.Data.Services
 {
-    /// Сервис для работы с организациями
+    /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public class OrganizationService : IRepository<Organization>
     {
         private List<Organization> _organizations;

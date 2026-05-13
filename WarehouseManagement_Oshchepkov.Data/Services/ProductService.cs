@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using System.Linq;
 using WarehouseManagement_Oshchepkov.Data.Models;
 
 namespace WarehouseManagement_Oshchepkov.Data.Services
 {
-    /// Сервис для работы с товарами
+    /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public class ProductService
     {
         private List<Product> _products;
@@ -22,31 +22,31 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
             _products = DataGenerator.GenerateProducts(_categories, _manufacturers, _suppliers);
         }
 
-        /// Получить все товары
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         public List<Product> GetAllProducts()
         {
             return _products.ToList();
         }
 
-        /// Получить товары на конкретном складе
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         public List<Product> GetProductsByWarehouse(long warehouseId)
         {
             return _products.Where(p => p.StockQuantity > 0).ToList();
         }
 
-        /// Получить товар по артикулу
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public Product? GetByArticle(string article)
         {
             return _products.FirstOrDefault(p => p.Article == article);
         }
 
-        /// Добавить новый товар
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         public void Add(Product product)
         {
             _products.Add(product);
         }
 
-        /// Обновить товар
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         public void Update(Product product)
         {
             var index = _products.FindIndex(p => p.Article == product.Article);
@@ -54,7 +54,7 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
                 _products[index] = product;
         }
 
-        /// Удалить товар
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         public void Delete(string article)
         {
             var product = GetByArticle(article);
@@ -62,25 +62,25 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
                 _products.Remove(product);
         }
 
-        /// Получить все категории
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public List<Category> GetAllCategories()
         {
             return _categories.ToList();
         }
 
-        /// Получить всех производителей
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public List<Manufacturer> GetAllManufacturers()
         {
             return _manufacturers.ToList();
         }
 
-        /// Получить всех поставщиков
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public List<Supplier> GetAllSuppliers()
         {
             return _suppliers.ToList();
         }
 
-        /// Обновить остаток товара на складе
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         public void UpdateStock(string article, int quantityChange)
         {
             var product = GetByArticle(article);

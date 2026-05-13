@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using System.Linq;
 using WarehouseManagement_Oshchepkov.Data.Models;
 
 namespace WarehouseManagement_Oshchepkov.Data.Services
 {
-    /// Сервис для работы со складами
+    /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public class WarehouseService : IRepository<Warehouse>
     {
         private List<Warehouse> _warehouses;
@@ -22,7 +22,7 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
             return _warehouses.ToList();
         }
 
-        /// Получить склады по ID организации
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ ID пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public List<Warehouse> GetByOrganizationId(long organizationId)
         {
             return _warehouses.Where(w => w.OrganizationId == organizationId).ToList();

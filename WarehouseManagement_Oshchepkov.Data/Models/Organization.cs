@@ -1,4 +1,4 @@
-namespace WarehouseManagement_Oshchepkov.Data.Models
+﻿namespace WarehouseManagement_Oshchepkov.Data.Models
 {
     public class Organization
     {

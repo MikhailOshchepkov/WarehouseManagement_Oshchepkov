@@ -1,4 +1,4 @@
-using System.Windows;
+п»їusing System.Windows;
 
 namespace WarehouseManagement_Oshchepkov.WPF
 {
@@ -11,7 +11,7 @@ namespace WarehouseManagement_Oshchepkov.WPF
             InitializeComponent();
             _orgName = organizationName;
 
-            // Показываем название организации, которую удаляем
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             TxtOrgName.Text = organizationName;
         }
 
@@ -24,8 +24,8 @@ namespace WarehouseManagement_Oshchepkov.WPF
             }
             else
             {
-                MessageBox.Show("Введенное название не совпадает с названием организации",
-                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+                    "пїЅпїЅпїЅпїЅпїЅпїЅ", MessageBoxButton.OK, MessageBoxImage.Error);
                 TxtConfirmName.Text = "";
                 TxtConfirmName.Focus();
             }

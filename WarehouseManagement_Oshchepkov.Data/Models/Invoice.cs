@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.ObjectModel;
 
 namespace WarehouseManagement_Oshchepkov.Data.Models
@@ -33,8 +33,8 @@ namespace WarehouseManagement_Oshchepkov.Data.Models
 
         public override string ToString()
         {
-            string typeName = Type == InvoiceType.Incoming ? "Приход" : "Расход";
-            return $"{typeName} накладная №{Id} от {Date:dd.MM.yyyy}";
+            string typeName = Type == InvoiceType.Incoming ? "пїЅпїЅпїЅпїЅпїЅпїЅ" : "пїЅпїЅпїЅпїЅпїЅпїЅ";
+            return $"{typeName} пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ{Id} пїЅпїЅ {Date:dd.MM.yyyy}";
         }
     }
 }

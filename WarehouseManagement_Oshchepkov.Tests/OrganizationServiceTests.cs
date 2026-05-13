@@ -1,4 +1,4 @@
-using NUnit.Framework;
+п»їusing NUnit.Framework;
 using WarehouseManagement_Oshchepkov.Data.Models;
 using WarehouseManagement_Oshchepkov.Data.Services;
 using System.Linq;
@@ -28,7 +28,7 @@ namespace WarehouseManagement_Oshchepkov.Tests.ServicesTests
         public void Add_ShouldIncreaseCount()
         {
             var initialCount = _service.GetAll().Count;
-            var newOrg = new Organization("Тестовая организация");
+            var newOrg = new Organization("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
             _service.Add(newOrg);
             var newCount = _service.GetAll().Count;
             Assert.That(newCount, Is.EqualTo(initialCount + 1));
@@ -48,7 +48,7 @@ namespace WarehouseManagement_Oshchepkov.Tests.ServicesTests
         public void Update_ShouldChangeOrganizationName()
         {
             var org = _service.GetAll().First();
-            var newName = "Обновленное название";
+            var newName = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
             org.Name = newName;
             _service.Update(org);
             var updatedOrg = _service.GetById(org.Id);

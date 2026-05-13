@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 
 namespace WarehouseManagement_Oshchepkov.Data.Models
 {
@@ -6,7 +6,7 @@ namespace WarehouseManagement_Oshchepkov.Data.Models
     {
         public string Article { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public string Unit { get; set; } = "øò";
+        public string Unit { get; set; } = "ï¿½ï¿½";
         public decimal Price { get; set; }
         public decimal DiscountPercent { get; set; }
         public int StockQuantity { get; set; }
@@ -30,6 +30,6 @@ namespace WarehouseManagement_Oshchepkov.Data.Models
             Price = price;
         }
 
-        public override string ToString() => $"{Name} (Àðò. {Article})";
+        public override string ToString() => $"{Name} (ï¿½ï¿½ï¿½. {Article})";
     }
 }

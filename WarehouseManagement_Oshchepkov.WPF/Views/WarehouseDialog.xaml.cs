@@ -1,4 +1,4 @@
-using System.Windows;
+п»їusing System.Windows;
 
 namespace WarehouseManagement_Oshchepkov.WPF
 {
@@ -15,7 +15,7 @@ namespace WarehouseManagement_Oshchepkov.WPF
 
             if (!string.IsNullOrEmpty(initialName))
             {
-                Title = "Редактирование склада";
+                Title = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ";
             }
         }
 
@@ -23,7 +23,7 @@ namespace WarehouseManagement_Oshchepkov.WPF
         {
             if (string.IsNullOrWhiteSpace(TxtWarehouseName.Text))
             {
-                MessageBox.Show("Введите название склада", "Ошибка",
+                MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅ",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }

@@ -1,9 +1,9 @@
-using System;
+п»їusing System;
 using System.Windows.Input;
 
 namespace WarehouseManagement_Oshchepkov.WPF.ViewModels
 {
-    /// Реализация ICommand для MVVM
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ICommand пїЅпїЅпїЅ MVVM
     public class RelayCommand : ICommand
     {
         private readonly Action<object?> _execute;
