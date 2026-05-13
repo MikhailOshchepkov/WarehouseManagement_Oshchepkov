@@ -2,22 +2,22 @@
 
 namespace WarehouseManagement_Oshchepkov.Data.Services
 {
-    /// ������� ��������� ��� CRUD ��������
+    /// Базовый интерфейс для CRUD операций
     public interface IRepository<T>
     {
-        ///�������� ��� ������
+        ///Получить все записи
         List<T> GetAll();
 
-        ///�������� ������ �� ID
+        ///Получить запись по ID
         T? GetById(object id);
 
-        ///�������� ����� ������
+        ///Добавить новую запись
         void Add(T entity);
 
-        ///�������� ������������ ������
+        ///Обновить существующую запись
         void Update(T entity);
 
-        ///������� ������ �� ID 
+        ///Удалить запись по ID 
         void Delete(object id);
     }
 }

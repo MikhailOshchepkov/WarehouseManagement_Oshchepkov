@@ -4,7 +4,7 @@ using WarehouseManagement_Oshchepkov.Data.Models;
 
 namespace WarehouseManagement_Oshchepkov.Data.Services
 {
-    /// ������ ��� ������ � �������������
+    /// Сервис для работы с организациями
     public class OrganizationService : IRepository<Organization>
     {
         private List<Organization> _organizations;

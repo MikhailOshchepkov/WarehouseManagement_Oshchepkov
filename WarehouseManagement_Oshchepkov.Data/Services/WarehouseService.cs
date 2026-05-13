@@ -4,7 +4,7 @@ using WarehouseManagement_Oshchepkov.Data.Models;
 
 namespace WarehouseManagement_Oshchepkov.Data.Services
 {
-    /// ������ ��� ������ �� ��������
+    /// Сервис для работы со складами
     public class WarehouseService : IRepository<Warehouse>
     {
         private List<Warehouse> _warehouses;
@@ -22,7 +22,7 @@ namespace WarehouseManagement_Oshchepkov.Data.Services
             return _warehouses.ToList();
         }
 
-        /// �������� ������ �� ID �����������
+        /// Получить склады по ID организации
         public List<Warehouse> GetByOrganizationId(long organizationId)
         {
             return _warehouses.Where(w => w.OrganizationId == organizationId).ToList();

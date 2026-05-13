@@ -33,8 +33,8 @@ namespace WarehouseManagement_Oshchepkov.Data.Models
 
         public override string ToString()
         {
-            string typeName = Type == InvoiceType.Incoming ? "������" : "������";
-            return $"{typeName} ��������� �{Id} �� {Date:dd.MM.yyyy}";
+            string typeName = Type == InvoiceType.Incoming ? "Приход" : "Расход";
+            return $"{typeName} накладная №{Id} от {Date:dd.MM.yyyy}";
         }
     }
 }

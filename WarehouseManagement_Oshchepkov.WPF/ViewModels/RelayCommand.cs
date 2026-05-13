@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace WarehouseManagement_Oshchepkov.WPF.ViewModels
 {
-    /// ���������� ICommand ��� MVVM
+    /// Реализация ICommand для MVVM
     public class RelayCommand : ICommand
     {
         private readonly Action<object?> _execute;
